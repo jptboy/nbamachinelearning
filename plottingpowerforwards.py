@@ -9,6 +9,7 @@ import numpy as np
 import sklearn as sk
 
 
+year = int(input("What year of data mane?\n"))
 
 # In[2]:
 
@@ -25,7 +26,7 @@ ogdata.head(10)
 # In[4]:
 
 
-data2000plus = ogdata[ogdata["SeasonStart"] >= 2000]
+data2000plus = ogdata[ogdata["SeasonStart"] == year]
 realplayers = data2000plus[data2000plus["MP"] >= 1000]
 
 
@@ -155,7 +156,7 @@ ax.scatter(X, Y, Z)
 ax.set_xlabel("Points")
 ax.set_ylabel("Offensive Rebounds")
 ax.set_zlabel("Assists")
-ax.set_title("Stats of PF's after 2000 that played\n real minutes (values normalized between 0 and 1)")
+ax.set_title("Stats of PF's after %s that played\n real minutes (values normalized between 0 and 1)" % str(year))
 
 for X,Y,Z,name in zip(X,Y,Z,PFdf["Name"]):
     ax.text(X,Y,Z,name)
